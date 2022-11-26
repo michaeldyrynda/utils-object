@@ -42,7 +42,7 @@ class StandardObjectTest extends TestCase
     /**
      * @return void
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->proxy = (object) [
             'type' => 'posts',
