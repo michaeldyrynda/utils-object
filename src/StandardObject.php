@@ -25,16 +25,13 @@ use Traversable;
 
 /**
  * Class StandardObject
- *
- * @package CloudCreativity\Utils\Object
  */
 class StandardObject implements IteratorAggregate, StandardObjectInterface
 {
-
     use ObjectProxyTrait;
 
     /**
-     * @param object|null $proxy
+     * @param  object|null  $proxy
      */
     public function __construct($proxy = null)
     {
@@ -63,7 +60,7 @@ class StandardObject implements IteratorAggregate, StandardObjectInterface
      */
     public function __get($key)
     {
-        if (!$this->has($key)) {
+        if (! $this->has($key)) {
             throw new OutOfBoundsException(sprintf('Key "%s" does not exist.', $key));
         }
 
@@ -96,18 +93,12 @@ class StandardObject implements IteratorAggregate, StandardObjectInterface
         $this->remove($key);
     }
 
-    /**
-     * @return Traversable
-     */
-    public function getIterator()
+    public function getIterator(): Traversable
     {
         return Obj::traverse($this->proxy);
     }
 
-    /**
-     * @return int
-     */
-    public function count()
+    public function count(): int
     {
         return count($this->toArray());
     }

@@ -278,10 +278,7 @@ trait ObjectProxyTrait
         return Obj::replicate($this->proxy);
     }
 
-    /**
-     * @return object
-     */
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         return $this->proxy;
     }
